@@ -15,6 +15,11 @@ void print_v (std::string const& annotation, std::vector<std::vector<int>> const
     }  
 }
 
+template <size_t N>
+struct FooGenerator {
+    int operator() () { static int i_ = N; return i_++; }
+};
+
 int main()
 {
     int k = 3;
@@ -58,6 +63,25 @@ int main()
         }
     
         print_v( "Generate with Foo functor (copy)" , g);
+    }
+    
+    // Prints
+    // 0 1 2 
+    // 3 4 5 
+    // 6 7 8 
+    {
+
+        const size_t start = 0;
+        
+        std::vector<std::vector<int>> g(k);
+        FooGenerator<start> f;
+
+        for ( auto& v : g) {
+            v.resize(k);
+            std::generate(v.begin(), v.end(), f );
+        }
+    
+        print_v( "Generate with FooGenerator " , g);
     }
     
     return 0;
