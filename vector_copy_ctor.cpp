@@ -9,8 +9,8 @@ class Foo {
         
         std::cout << "Ctor Foo" << std::endl;
         
-        for (auto vi : v_) {
-            for (auto i : vi) {
+        for (const auto& vi : v_) {
+            for (const auto& i : vi) {
                 std::cout << i << " ";
             }
             
