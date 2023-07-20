@@ -7,3 +7,4 @@
 - `op_with_templates.cpp` studies functor's behaviour 
 
 - `factorial_meta.cpp` recursive factorial template implementation
+- `test_dip.cpp` Redirect the output from a process in fork into a thread in the parent process to read messages in parallel.
